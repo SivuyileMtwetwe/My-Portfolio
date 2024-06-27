@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sivuyile Mtwetwe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Sivuyile Mtwetwe</h1>
+        <nav>
+            <ul>
+                <li><a href="#landing">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="landing">
+            <div class="intro">
+                <h2>Hello, I'm [Sivuyile Mtwetwe]</h2> 
+                <p>A passionate developer specializing in MERN stack.</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <img src="your_photo.jpg" alt="Your Photo"> 
+            <p>Here's a brief overview of my journey as a developer...</p>
+            <div class="timeline">
+                <div class="container left">
+                    <div class="content">
+                        <h2>2020</h2>
+                        <p>Graduated from University X</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>2021</h2>
+                        <p>Started working at Company Y</p>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill" data-skill="MongoDB">
+                  <i class="fab fa-mdb"></i> <span class="skill-label">MongoDB</span>
+                </div>
+                <div class="skill" data-skill="Express">
+                  <i class="fab fa-node-js"></i> <span class="skill-label">Express.js</span>
+                </div>
+                <div class="skill" data-skill="Angular">
+                  <i class="fab fa-angular"></i> <span class="skill-label">Angular</span>
+                </div>
+                <div class="skill" data-skill="Node.js">
+                  <i class="fab fa-node"></i> <span class="skill-label">Node.js</span>
+                </div>
+                </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="filter-buttons">
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="mern">MERN</button>
+                <button data-filter="frontend">Frontend</button>
+            </div>
+            <div class="project-gallery">
+                <div class="project" data-tags="mern">
+                    <img src="project1.jpg" alt="Project 1">
+                    <div class="overlay">
+                        <h3>Project Title 1</h3>
+                        <p>Description of Project 1 goes here...</p>
+                    </div>
+                </div>
+                <div class="project" data-tags="frontend">
+                    <img src="project2.jpg" alt="Project 2">
+                    <div class="overlay">
+                        <h3>Project Title 2</h3>
+                        <p>Description of Project 2 goes here...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="project-modal" class="modal">
+                <span class="close-btn">&times;</span>
+                <img class="modal-content" id="project-img">
+                <div id="project-caption"></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <button id="theme-toggle">Toggle Theme</button> 
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Name</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
