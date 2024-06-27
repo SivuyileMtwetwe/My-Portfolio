@@ -16,14 +16,14 @@ window.addEventListener('load', () => {
       const level = bar.dataset.level;
       setTimeout(() => {
         fill.style.width = level + '%';
-      }, 100);
+      }, 100); // Adjust the delay if needed
     });
   
     // Landing Page Animation
     const landingSection = document.getElementById('landing');
     setTimeout(() => {
       landingSection.classList.add('show');
-    }, 500);
+    }, 500); // Adjust the delay if needed
   
     // Project Gallery Filtering
     const filterButtons = document.querySelectorAll('.filter-buttons button');
@@ -47,154 +47,210 @@ window.addEventListener('load', () => {
     });
   
     // Project Gallery Lightbox
-    const projectImages = document.querySelectorAll('.project img');
+    const modalImages = document.querySelectorAll('.project-gallery img');
     const modal = document.getElementById('project-modal');
     const modalImg = document.getElementById('project-img');
     const captionText = document.getElementById('project-caption');
+    let currentImageIndex = 0;
   
-    projectImages.forEach(img => {
+    modalImages.forEach((img, index) => {
       img.onclick = function() {
         modal.style.display = "block";
-        setTimeout(() => {
-          modal.classList.add('show');
-        }, 10);
-        modalImg.src = this.src;
-        const project = this.closest('.project');
-        const overlay = project.querySelector('.overlay');
-        captionText.innerHTML = overlay.innerHTML; // Use overlay content for caption
+        setTimeout(() => modal.classList.add('show'), 10);
+        currentImageIndex = index;
+        updateModalImage();
       }
     });
   
-    const closeBtn = document.getElementsByClassName("close-btn")[0];
-    closeBtn.onclick = function() {
+    function updateModalImage() {
+      modalImg.src = modalImages[currentImageIndex].src;
+      const project = modalImages[currentImageIndex].closest('.project');
+      const overlay = project.querySelector('.overlay');
+      captionText.innerHTML = overlay.innerHTML;
+    }
+  
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  
+    function closeModal() {
       modal.classList.remove('show');
-      setTimeout(() => {
-        modal.style.display = "none";
-      }, 500);
+      setTimeout(() => modal.style.display = "none", 500);
+    }
+  
+    // Add "Next" and "Previous" buttons to the modal HTML
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next';
+    nextBtn.addEventListener('click', showNextImage);
+    modal.appendChild(nextBtn);
+  
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = 'Prev';
+    prevBtn.addEventListener('click', showPrevImage);
+    modal.appendChild(prevBtn);
+  
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % modalImages.length;
+      updateModalImage();
+    }
+  
+    function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + modalImages.length) % modalImages.length;
+      updateModalImage();
     }
   
     // Contact Form Validation and Submission
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-  
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      let isValid = true;
-  
-      if (name === '') {
-        showError('name', 'Name is required');
-        isValid = false;
-      } else {
-        clearError('name');
-      }
-  
-      if (!validateEmail(email)) {
-        showError('email', 'Invalid email address');
-        isValid = false;
-      } else {
-        clearError('email');
-      }
-  
-      if (message === '') {
-        showError('message', 'Message is required');
-        isValid = false;
-      } else {
-        clearError('message');
-      }
-  
-      if (isValid) {
-        // Replace this with your actual form submission logic (e.g., using Fetch API or AJAX)
-        alert('Message sent successfully!'); 
-        form.reset();
-  
-        // Display success message
-        const successMessage = document.createElement('div');
-        successMessage.textContent = 'Your message has been sent.';
-        successMessage.classList.add('success-message');
-        form.appendChild(successMessage);
-  
-        // Optionally, remove the success message after a few seconds
-        setTimeout(() => {
-          successMessage.remove();
-        }, 5000);
-      }
-    });
-  
-    // Helper Functions
-    function validateEmail(email) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    }
-  
-    function showError(inputId, message) {
-      const inputField = document.getElementById(inputId);
-      const errorElement = document.createElement('div');
-      errorElement.textContent = message;
-      errorElement.classList.add('error-message');
-      inputField.parentNode.insertBefore(errorElement, inputField.nextSibling);
-      inputField.classList.add('error');
-    }
-  
-    function clearError(inputId) {
-      const inputField = document.getElementById(inputId);
-      const errorElement = inputField.parentNode.querySelector('.error-message');
-      if (errorElement) {
-        errorElement.remove();
-        inputField.classList.remove('error');
-      }
-    }
+    window.addEventListener('load', () => {
+        // ... (other parts of the script.js code remain the same) ...
+      
+        // Contact Form Validation and Submission
+        const form = document.getElementById('contact-form');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+      
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const message = document.getElementById('message').value.trim();
+          let isValid = true;
+      
+          if (name === '') {
+            showError('name', 'Name is required');
+            isValid = false;
+          } else {
+            clearError('name');
+          }
+      
+          if (!validateEmail(email)) {
+            showError('email', 'Invalid email address');
+            isValid = false;
+          } else {
+            clearError('email');
+          }
+      
+          if (message === '') {
+            showError('message', 'Message is required');
+            isValid = false;
+          } else {
+            clearError('message');
+          }
+      
+          if (isValid) {
+            // Actual Form Submission using Fetch API
+            const formData = {
+              name: name,
+              email: email,
+              message: message
+            };
+      
+            fetch('your-form-submission-endpoint-url', { // Replace with your actual endpoint
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            })
+            .then(response => {
+              if (response.ok) { // If the response is successful (status code 200-299)
+                form.reset();
+                showSuccessMessage('Your message has been sent.');
+              } else {
+                showError('message', 'There was an error sending your message.');
+              }
+            })
+            .catch(error => {
+              showError('message', 'There was an error sending your message.');
+              console.error('Error:', error); // Log the error for debugging
+            });
+          }
+        });
+       
+      
+        // ... (Other helper functions - validateEmail, showError, clearError - remain the same)
+      
+        // New helper function to display the success message
+        function showSuccessMessage(message) {
+            const successMessage = document.createElement('div');
+            successMessage.textContent = message;
+            successMessage.classList.add('success-message');
+            form.appendChild(successMessage);
+      
+            setTimeout(() => {
+              successMessage.remove();
+            }, 5000); // Remove after 5 seconds
+        }
+      
+      });
+      
+    // ... (Form validation code from the previous response) ...
   
     // Theme Toggle
     // ... (Theme toggle code from the previous response) ...
   
+    // ... (Other JavaScript code for smooth scrolling, skills, projects, etc.) ...
+
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for user preference in localStorage
+const isDarkMode = localStorage.getItem('theme') === 'dark';
+if (isDarkMode) {
+  body.classList.add('dark-mode');
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    // Update and save theme preference in localStorage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+    // Parallax Scrolling Effect 
+    const parallaxElements = document.querySelectorAll('.parallax');
+  
+    window.addEventListener('scroll', () => {
+      parallaxElements.forEach(el => {
+        const speed = el.dataset.parallaxSpeed || 0.5;
+        const yPos = -((window.scrollY - el.offsetTop) * speed);
+        el.style.backgroundPositionY = yPos + 'px';
+      });
+    });
+  
+  
     // Timeline Animation
     // ... (Timeline animation code from the previous response) ...
+
+    // ... (Other JavaScript code for smooth scrolling, skills, projects, etc.) ...
+
+// Timeline Animation
+function animateTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline .container');
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5, // Trigger when 50% of the item is in the viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target); // Stop observing after animation
+            } 
+        });
+    }, options);
+
+    timelineItems.forEach((item) => {
+        observer.observe(item);
+    });
+}
+
+animateTimeline(); // Call the function on page load
+
   });
   
-  // ... (previous code) ...
-
-// Parallax Scrolling Effect (with optimization)
-const parallaxElements = document.querySelectorAll('.parallax'); // Add parallax class to elements in HTML
-window.addEventListener('scroll', () => {
-  parallaxElements.forEach(el => {
-    const speed = el.dataset.parallaxSpeed || 0.5; // Default speed is 0.5
-    const yPos = -((window.scrollY - el.offsetTop) * speed);
-    el.style.backgroundPositionY = yPos + 'px';
-  });
-});
-
-// ... (lightbox code from previous response) ...
-
-// Modal Navigation
-const modalImages = document.querySelectorAll('.project-gallery img');
-let currentImageIndex = 0;
-modal.addEventListener('click', (event) => {
-  if (event.target === modal) { // Check if clicking outside the content
-    closeModal();
-  }
-});
-
-function showNextImage() {
-  currentImageIndex = (currentImageIndex + 1) % modalImages.length;
-  updateModalImage();
-}
-
-function showPrevImage() {
-  currentImageIndex = (currentImageIndex - 1 + modalImages.length) % modalImages.length;
-  updateModalImage();
-}
-
-function updateModalImage() {
-  modalImg.src = modalImages[currentImageIndex].src;
-  const project = modalImages[currentImageIndex].closest('.project');
-  const overlay = project.querySelector('.overlay');
-  captionText.innerHTML = overlay.innerHTML;
-}
-
-// Add "Next" and "Previous" buttons to the modal HTML 
-// and add event listeners to call showNextImage() and showPrevImage()
-
-// ... (Rest of the script.js code)
-
