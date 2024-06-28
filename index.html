@@ -4,9 +4,20 @@
     <title>Sivuyile Mtwetwe</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+
+
 </head>
 <body>
-
+ <!-- <div id="preloader">
+            <div class="loader"></div>
+        </div> -->
     <header>
         <h1>Sivuyile Mtwetwe</h1>
         <nav>
@@ -27,29 +38,37 @@
                 <h2>Hello, I'm Sivuyile Mtwetwe</h2> 
                 <p>A passionate developer specializing in MEAN stack.</p>
             </div>
+            <a href="/CV/Curriculum Vitae Of Sivuyile Mtwetwe.docx" download>Download Resume</a>
         </section>
 
-        <section id="about">
-            <h2>About Me</h2>
+        <section id="about" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <h2 data-aos="fade-up">About Me</h2>
+
             <img src="/Images/Picsart_24-06-27_21-26-59-799.png" alt="Your Photo"> 
             <p>Here's a brief overview of my journey as a developer...</p>
             <div class="timeline">
                 <div class="container left">
                     <div class="content">
-                        <h2>2020</h2>
-                        <p>Graduated from University X</p>
+                        <h2>2021</h2>
+                        <p>Started Learning Adobe Photoshop from YouTube</p>
                     </div>
                 </div>
                 <div class="container right">
                     <div class="content">
                         <h2>2021</h2>
-                        <p>Started working at Company Y</p>
+                        <p>Started Learning Python from YouTube</p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>2022</h2>
+                        <p>Left University</p>
                     </div>
                 </div>
                 </div>
         </section>
 
-        <section id="skills">
+        <section id="skills" data-aos="fade-up">
             <h2>Skills</h2>
             <div class="skills-container">
                 <div class="skill" data-skill="MongoDB">
@@ -65,9 +84,10 @@
                   <i class="fab fa-node"></i> <span class="skill-label">Node.js</span>
                 </div>
                 </div>
+                <canvas id="skills-chart"></canvas>
         </section>
 
-        <section id="projects">
+        <section id="projects" data-aos="fade-up">
             <h2>Projects</h2>
             <div class="filter-buttons">
                 <button class="active" data-filter="all">All</button>
@@ -75,18 +95,29 @@
                 <button data-filter="frontend">Frontend</button>
             </div>
             <div class="project-gallery">
-                <div class="project" data-tags="mern">
+                <!-- <div class="project" data-tags="mern">
                     <img src="project1.jpg" alt="Project 1">
                     <div class="overlay">
                         <h3>Project Title 1</h3>
                         <p>Description of Project 1 goes here...</p>
                     </div>
-                </div>
-                <div class="project" data-tags="frontend">
+                </div> -->
+                <!-- <div class="project" data-tags="frontend">
                     <img src="project2.jpg" alt="Project 2">
                     <div class="overlay">
                         <h3>Project Title 2</h3>
                         <p>Description of Project 2 goes here...</p>
+                    </div>
+                </div> -->
+                <div class="project" data-tags="mern"> <img src="/Images/Screenshot (7).png" alt="Recipe API Project">
+                    <div class="overlay">
+                        <h3>Recipe API</h3>
+                        <p>
+                            A RESTful API for managing recipes. Built with Node.js, Express, and MongoDB.
+                            <br> 
+                            <a href="https://digitalrecipebook.netlify.app" target="_blank">Live Demo</a> 
+                            <a href="https://github.com/SivuyileMtwetwe/recipe-api.git" target="_blank">GitHub Repo</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -95,12 +126,33 @@
                 <span class="close-btn">&times;</span>
                 <img class="modal-content" id="project-img">
                 <div id="project-caption"></div>
+                <button id="prev-project-btn">&#10094;</button>
+<button id="next-project-btn">&#10095;</button>
+
             </div>
         </section>
 
-        <section id="contact">
+        <section id="blog">
+            <h2>Recent Blog Posts</h2>
+            <div class="blog-posts">
+                </div>
+        </section>
+        
+
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"John Doe is an amazing developer. He built my website and it exceeded all my expectations."</p>
+                    <h4>- Jane Smith, CEO of Acme Corp</h4>
+                </div>
+                </div>
+        </section>
+        
+
+        <section id="contact" data-aos="fade-up">
             <h2>Contact Me</h2>
-            
+            <div id="map"></div>
             <form id="contact-form">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -117,12 +169,47 @@
                 <button type="submit">Send Message</button>
             </form>
         </section>
+      
+        
     </main>
-
+ 
     <footer>
         <p>&copy; 2024 Sivuyile Mtwetwe</p>
+        <div class="social-media">
+            <a href="https://twitter.com/mtwetwesivuyile" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/your-facebook-profile" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/lynne_cpt021" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/SivuyileMtwetwe" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.tiktok.com/@lynne_cpt021" target="_blank">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://discord.com/invite/your-discord-server" target="_blank">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="mailto:your-gmail-address" target="_blank">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/your-youtube-channel" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+          
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+          // Customize AOS settings here if needed
+        });
+    </script>
 </body>
 </html>
