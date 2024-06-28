@@ -310,3 +310,18 @@ fetch('your_blog_rss_feed_url')
       blogPostsContainer.appendChild(postElement);
     });
   });
+
+  // Inside the window.addEventListener('load', ...) function:
+const landingText = document.querySelector('#landing h2');
+const textToType = landingText.textContent;
+landingText.textContent = ''; // Clear the text
+
+let charIndex = 0;
+function type() {
+  if (charIndex < textToType.length) {
+    landingText.textContent += textToType.charAt(charIndex);
+    charIndex++;
+    setTimeout(type, 80); // Adjust the typing speed (milliseconds per character)
+  }
+}
+type(); // Start the typing animation

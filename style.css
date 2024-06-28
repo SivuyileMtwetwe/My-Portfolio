@@ -548,3 +548,20 @@ body.dark-mode .social-media a {
 body.dark-mode .social-media a:hover i {
     color: #008CBA; /* Different hover color for dark mode */
 }
+
+/* Add this style to style.css */
+.timeline::after { /* Update the timeline line color */
+    background-color: #4CAF50; /* or your brand color */
+  }
+  
+  /* Button hover effect */
+button:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-2px); /* Move the button slightly up */
+  }
+  
+  /* Project hover effect (add to existing .project:hover rule) */
+  .project:hover img {
+      filter: brightness(1.2) contrast(1.1); /* Adjust brightness and contrast */
+  }
+  
