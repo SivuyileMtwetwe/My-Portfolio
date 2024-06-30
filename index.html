@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/e086fa8a79.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
 
 
 
@@ -60,20 +63,29 @@
                         <p>Started Learning Python from YouTube</p>
                     </div>
                 </div>
-                <div class="container left"  data-aos="fade-right" data-aos-delay="100">
+                <div class="container left" data-aos="fade-right">
                     <div class="content">
-                        <h2>2022</h2>
-                        <p>Left University</p>
+                        <img src="graduation-icon.png" alt="Graduated from University X" title="Graduated from University X">
+                        <h2 data-aos="fade-right" data-aos-delay="100">2020</h2>
+                        <p data-aos="fade-right" data-aos-delay="200">Graduated from University X</p>
+                        <a href="#" class="read-more">Read More</a> 
+                        <div class="event-details">
                     </div>
                 </div>
+                
+                
                 </div>
         </section>
 
         <section id="skills" data-aos="fade-up">
             <h2>Skills</h2>
+            <div id="skills-cube"></div>
             <div class="skills-container">
                 <div class="skill" data-skill="MongoDB">
                   <i class="fab fa-mdb"></i> <span class="skill-label">MongoDB</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" data-level="90"></div>
+                </div>
                 </div>
                 <div class="skill" data-skill="Express">
                   <i class="fab fa-node-js"></i> <span class="skill-label">Express.js</span>
@@ -132,6 +144,13 @@
 
             </div>
         </section>
+
+        <section id="github">
+            <h2>GitHub Activity</h2>
+            <div class="github-feed">
+                </div>
+        </section>
+        
 
         <section id="blog">
             <h2>Recent Blog Posts</h2>

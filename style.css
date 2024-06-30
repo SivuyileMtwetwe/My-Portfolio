@@ -564,4 +564,69 @@ button:hover {
   .project:hover img {
       filter: brightness(1.2) contrast(1.1); /* Adjust brightness and contrast */
   }
+  #skills-cube {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto; /* Center the cube */
+  }
   
+  /* GitHub Feed */
+#github {
+    /* Add styles to your liking */
+}
+
+.github-feed {
+    /* Style the feed container */
+}
+
+.feed-item {
+    margin-bottom: 10px; /* Space out the feed items */
+    /* Add more styles to your liking */
+}
+
+#about img:hover {
+    transform: scale(1.1); /* Enlarge the image on hover */
+    box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Add a subtle shadow */
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background-color: #4CAF50; 
+    width: 0%;  
+    opacity: 0; /* Hide initially */
+    transition: width 0.5s ease, opacity 0.5s ease; 
+}
+
+.skill-bar.show .skill-bar-fill { 
+    width: 100%;
+    opacity: 1;
+}
+
+.event-details {
+    display: none; /* Hide details initially */
+    margin-top: 10px; /* Add some spacing */
+}
+
+.read-more {
+    /* Style the Read More button */
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.timeline .container.expanded .event-details { /* Show details when expanded */
+  display: block;
+}
+
+
+.skill-bar-fill {
+    height: 100%;
+    background-color: #4CAF50; 
+    width: 0%;  
+    transition: width 0.5s ease; 
+}
+
+/* Add this new class to handle animation on scroll */
+.skill-bar-fill.animate {
+    width: var(--skill-level); /* Set width based on data-level attribute */
+}
