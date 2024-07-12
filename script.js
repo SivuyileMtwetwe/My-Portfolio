@@ -1,304 +1,269 @@
-window.addEventListener('load', () => {
-    const smoothScrollLinks = document.querySelectorAll('nav a[href^="#"], #projects a[href^="#"]');
-    smoothScrollLinks.forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = anchor.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    window.addEventListener('load', function() {
+        document.querySelector('#preloader').style.display = 'none';
     });
-  
-    const progressBars = document.querySelectorAll('.skill-bar');
-    const progressBarOptions = {
-      root: null,
-      threshold: 0.5, 
-    };
-  
-    const progressBarObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const fill = bar.querySelector('.skill-bar-fill');
-          const level = bar.dataset.level;
-          fill.style.width = level + '%';
-          bar.classList.add('show'); 
-          progressBarObserver.unobserve(bar); 
-        }
-      });
-    }, progressBarOptions);
-  
-    progressBars.forEach(bar => progressBarObserver.observe(bar));
-  
-    const landingSection = document.getElementById('landing');
-    setTimeout(() => {
-        landingSection.classList.add('show');
-    }, 500);
-  
-    const filterButtons = document.querySelectorAll('.filter-buttons button');
-    const projects = document.querySelectorAll('.project');
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filterValue = button.dataset.filter;
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            projects.forEach(project => {
-                const projectTags = project.dataset.tags.split(',');
-                project.style.display = filterValue === 'all' || projectTags.includes(filterValue) ? 'block' : 'none';
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
     });
-  
-    const modalImages = document.querySelectorAll('.project-gallery img');
+
+    // Theme toggle
+    const themeToggle = document.getElementById('flexSwitchCheckDefault');
+    const body = document.body;
+
+    themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.checked = true;
+    }
+
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.progress-bar-fill');
+    const animateSkills = () => {
+        skillBars.forEach(bar => {
+            const barTop = bar.getBoundingClientRect().top;
+            if (barTop < window.innerHeight) {
+                bar.style.width = bar.getAttribute('data-level') + '%';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateSkills);
+
+    // Project filter
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const projects = document.querySelectorAll('.project');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            projects.forEach(project => {
+                if (filter === 'all' || project.getAttribute('data-tags').includes(filter)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Project modal
     const modal = document.getElementById('project-modal');
     const modalImg = document.getElementById('project-img');
     const captionText = document.getElementById('project-caption');
-    let currentImageIndex = 0;
-  
-    modalImages.forEach((img, index) => {
-        img.onclick = () => {
-            modal.style.display = "block";
-            setTimeout(() => modal.classList.add('show'), 10);
-            currentImageIndex = index;
-            updateModalImage();
-        };
+    const closeBtn = document.getElementsByClassName('close-btn')[0];
+    const prevBtn = document.getElementById('prev-project-btn');
+    const nextBtn = document.getElementById('next-project-btn');
+    let currentProject = 0;
+
+    projects.forEach((project, index) => {
+        project.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalImg.src = project.querySelector('img').src;
+            captionText.innerHTML = project.querySelector('.overlay').innerHTML;
+            currentProject = index;
+            updateNavigationButtons();
+        });
     });
-  
-    function updateModalImage() {
-        modalImg.src = modalImages[currentImageIndex].src;
-        const project = modalImages[currentImageIndex].closest('.project');
-        const overlay = project.querySelector('.overlay');
-        captionText.innerHTML = overlay.innerHTML;
-        prevBtn.disabled = currentImageIndex === 0;
-        nextBtn.disabled = currentImageIndex === modalImages.length - 1;
-    }
-  
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
+
+    closeBtn.onclick = () => modal.style.display = 'none';
+
+    prevBtn.addEventListener('click', () => {
+        currentProject = (currentProject - 1 + projects.length) % projects.length;
+        updateModalContent();
     });
-  
-    function closeModal() {
-        modal.classList.remove('show');
-        setTimeout(() => modal.style.display = "none", 500);
+
+    nextBtn.addEventListener('click', () => {
+        currentProject = (currentProject + 1) % projects.length;
+        updateModalContent();
+    });
+
+    function updateModalContent() {
+        modalImg.src = projects[currentProject].querySelector('img').src;
+        captionText.innerHTML = projects[currentProject].querySelector('.overlay').innerHTML;
+        updateNavigationButtons();
     }
-  
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'Next';
-    nextBtn.addEventListener('click', showNextImage);
-    modal.appendChild(nextBtn);
-  
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'Prev';
-    prevBtn.addEventListener('click', showPrevImage);
-    modal.appendChild(prevBtn);
-  
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % modalImages.length;
-        updateModalImage();
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentProject === 0;
+        nextBtn.disabled = currentProject === projects.length - 1;
     }
-  
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + modalImages.length) % modalImages.length;
-        updateModalImage();
-    }
-  
+
+    // Form validation
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateForm()) {
+            // Here you would typically send the form data to a server
+            alert('Form submitted successfully!');
+            form.reset();
+        }
+    });
+
+    function validateForm() {
         let isValid = true;
-  
-        if (name === '') {
-            showError('name', 'Name is required');
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+
+        if (name.value.trim() === '') {
+            setErrorFor(name, 'Name cannot be blank');
             isValid = false;
         } else {
-            clearError('name');
+            setSuccessFor(name);
         }
-  
-        if (!validateEmail(email)) {
-            showError('email', 'Invalid email address');
+
+        if (email.value.trim() === '') {
+            setErrorFor(email, 'Email cannot be blank');
+            isValid = false;
+        } else if (!isValidEmail(email.value.trim())) {
+            setErrorFor(email, 'Email is not valid');
             isValid = false;
         } else {
-            clearError('email');
+            setSuccessFor(email);
         }
-  
-        if (message === '') {
-            showError('message', 'Message is required');
+
+        if (message.value.trim() === '') {
+            setErrorFor(message, 'Message cannot be blank');
             isValid = false;
         } else {
-            clearError('message');
+            setSuccessFor(message);
         }
-  
-        if (isValid) {
-            const formData = { name, email, message };
-            fetch('your-form-submission-endpoint-url', { 
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-                .then(response => {
-                    if (response.ok) {
-                        form.reset();
-                        showSuccessMessage('Your message has been sent.');
-                    } else {
-                        showError('message', 'There was an error sending your message.');
-                    }
-                })
-                .catch(error => {
-                    showError('message', 'There was an error sending your message.');
-                    console.error('Error:', error); 
-                });
-        }
-    });
-  
-    function showError(field, message) {
-        const fieldElement = document.getElementById(field);
-        const errorMessage = fieldElement.nextElementSibling;
-        fieldElement.classList.add('error');
-        errorMessage.textContent = message;
+
+        return isValid;
     }
-  
-    function clearError(field) {
-        const fieldElement = document.getElementById(field);
-        const errorMessage = fieldElement.nextElementSibling;
-        fieldElement.classList.remove('error');
-        errorMessage.textContent = '';
+
+    function setErrorFor(input, message) {
+        const formGroup = input.parentElement;
+        const small = formGroup.querySelector('small');
+
+        small.innerText = message;
+        formGroup.className = 'form-group error';
     }
-  
-    function validateEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()\[\]\\.,;:\s@"]+\.)+[^<>()\[\]\\.,;:\s@"]{2,})$/i;
-        return re.test(String(email).toLowerCase());
+
+    function setSuccessFor(input) {
+        const formGroup = input.parentElement;
+        formGroup.className = 'form-group success';
     }
-  
-    function showSuccessMessage(message) {
-        const successMessage = document.createElement('div');
-        successMessage.textContent = message;
-        successMessage.classList.add('success-message');
-        form.appendChild(successMessage);
-        setTimeout(() => successMessage.remove(), 5000); 
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
-  
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const isDarkMode = localStorage.getItem('theme') === 'dark';
-  
-    if (isDarkMode) {
-        body.classList.add('dark-mode');
-    }
-  
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
-  
-    const parallaxElements = document.querySelectorAll('.parallax');
-    window.addEventListener('scroll', () => {
-        parallaxElements.forEach(el => {
-            const speed = el.dataset.parallaxSpeed || 0.5;
-            const yPos = -((window.scrollY - el.offsetTop) * speed);
-            el.style.backgroundPositionY = yPos + 'px';
-        });
-    });
-  
-    function animateTimeline() {
-        const timelineItems = document.querySelectorAll('.timeline .container');
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5, 
-        };
-  
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-  
-        timelineItems.forEach((item) => {
-            observer.observe(item);
-        });
-    }
-  
-    animateTimeline();
-  
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor';
-    document.body.appendChild(cursor);
-  
-    window.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-  
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#4CAF50" 
-            }
+
+    // Initialize AOS
+    AOS.init();
+
+    // Skills chart
+    const ctx = document.getElementById('skills-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'Angular', 'MongoDB'],
+            datasets: [{
+                label: 'Skill Level',
+                data: [50, 85, 80, 75, 70, 65],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
         },
-    });
-  
-    document.addEventListener('keydown', (event) => {
-        if (modal.style.display === "block") { 
-            if (event.key === 'ArrowLeft') {
-                showPrevImage();
-            } else if (event.key === 'ArrowRight') {
-                showNextImage();
-            } else if (event.key === 'Escape') {
-                closeModal();
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 100
+                }
             }
         }
     });
-  });
-  
-  AOS.init();
-  
-  const skillsChart = document.getElementById('skills-chart').getContext('2d');
-  
-  const myChart = new Chart(skillsChart, {
-      type: 'bar',
-      data: {
-          labels: ['JavaScript', 'HTML', 'CSS', 'React', 'Node.js'],
-          datasets: [{
-              label: 'Skill Level',
-              data: [90, 85, 80, 75, 70], 
-              backgroundColor: [
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          responsive: true,
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
-  
+
+    // Map initialization (using Mapbox)
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-74.5, 40], // Default coordinates
+        zoom: 9
+    });
+
+    // Add marker to map
+    new mapboxgl.Marker()
+        .setLngLat([-74.5, 40])
+        .addTo(map);
+
+    // Typed.js for landing page
+    new Typed('#typed-output', {
+        strings: ['Web Developer', 'MEAN Stack Developer', 'UI/UX Enthusiast'],
+        typeSpeed: 50,
+        backSpeed: 50,
+        loop: true
+    });
+
+    // GitHub activity feed
+    function fetchGitHubActivity() {
+        // Replace 'YOUR_GITHUB_USERNAME' with your actual GitHub username
+        fetch('https://github.com/users/sivuyilemtwetwe/events/public')
+            .then(response => response.json())
+            .then(data => {
+                const activityFeed = document.querySelector('.github-feed');
+                data.slice(0, 5).forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = 'github-event';
+                    eventElement.textContent = `${event.type} on ${new Date(event.created_at).toLocaleDateString()}`;
+                    activityFeed.appendChild(eventElement);
+                });
+            })
+            .catch(error => console.error('Error fetching GitHub activity:', error));
+    }
+
+    fetchGitHubActivity();
+
+    // 3D Skills Cube
+    function initSkillsCube() {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(200, 200);
+        document.getElementById('skills-cube').appendChild(renderer.domElement);
+
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    }
+
+    initSkillsCube();
+});
