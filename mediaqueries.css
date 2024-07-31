@@ -27,6 +27,8 @@
     .section-container {
       display: block;
     }
+#about-pic{
+ display:flex;}
     .arrow {
       display: none;
     }
