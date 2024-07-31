@@ -27,8 +27,6 @@
     .section-container {
       display: block;
     }
-#about-pic{
- display:flex;}
     .arrow {
       display: none;
     }
@@ -58,6 +56,7 @@
       height: 83vh;
       margin-bottom: 0;
     }
+#about-pic{display:flex}
     article {
       font-size: 1rem;
     }
