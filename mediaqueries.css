@@ -56,7 +56,7 @@
       height: 83vh;
       margin-bottom: 0;
     }
-#about-pic{display:flex;
+.about-pic{display:flex;
 justify-content:center;
 align-items: center}
     article {
