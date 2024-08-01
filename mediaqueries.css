@@ -59,13 +59,12 @@
 .about-pic{display:flex;
 justify-content:center;
 align-items: center;
-margin: 50%}
+margin: 50px}
     article {
       font-size: 1rem;
     }
     footer nav {
       height: fit-content;
-      margin-bottom: 2rem;
     }
     .about-containers,
     .contact-info-upper-container,
