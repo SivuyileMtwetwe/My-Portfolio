@@ -59,7 +59,7 @@
 .about-pic{display:flex;
 justify-content:center;
 align-items: center;
-margin:auto}
+margin: center}
     article {
       font-size: 1rem;
     }
