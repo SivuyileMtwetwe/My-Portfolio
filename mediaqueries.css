@@ -58,7 +58,7 @@
     }
 #about-pic{display:flex;
 justify-content:center;
-align-item: center}
+align-items: center}
     article {
       font-size: 1rem;
     }
