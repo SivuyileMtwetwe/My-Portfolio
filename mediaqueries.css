@@ -56,7 +56,9 @@
       height: 83vh;
       margin-bottom: 0;
     }
-#about-pic{position: absolute;}
+#about-pic{display:flex;
+justify-content:center;
+align-item: center}
     article {
       font-size: 1rem;
     }
