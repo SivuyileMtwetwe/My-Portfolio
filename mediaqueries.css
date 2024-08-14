@@ -1,4 +1,8 @@
 @media screen and (max-width: 1400px) {
+  .dark-theme .hamburger span {
+    background-color: green;
+}
+
     #profile {
       height: 83vh;
       margin-bottom: 6rem;
@@ -13,6 +17,10 @@
   }
 
   @media screen and (max-width: 1200px) {
+    .dark-theme .hamburger span {
+      background-color: green;
+  }
+  
     #desktop-nav {
       display: none;
     }
@@ -48,10 +56,11 @@
   }
 
   @media screen and (max-width: 600px) {
-    #contact,
-    footer {
-      
-    }
+    .dark-theme .hamburger span {
+      background-color: green;
+  }
+  
+   
     #profile {
       height: 83vh;
       margin-bottom: 0;
@@ -106,3 +115,5 @@ width: auto;
       text-align: justify;
     }
   }
+
+

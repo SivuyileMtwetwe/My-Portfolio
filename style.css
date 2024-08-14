@@ -429,3 +429,44 @@ footer {
 footer p {
   text-align: center;
 }
+/* Dark Theme Styles */
+.dark-theme {
+  background-color: black;
+  color: green;
+}
+
+.dark-theme p, 
+.dark-theme h1, 
+.dark-theme h2, 
+.dark-theme h3, 
+.dark-theme h4, 
+.dark-theme h5, 
+.dark-theme h6, 
+.dark-theme a ,span{
+  color: green;
+}
+
+ 
+.dark-theme .hamburger span, 
+.dark-theme button {
+  background-color: green;
+  color: white;
+}
+
+.dark-theme .button:hover {
+  background-color: lightgreen;
+  color: white;
+}
+
+.dark-theme div {
+  background-color: black;
+}
+
+.dark-theme img.png {
+  filter: brightness(0) invert(1);
+}
+
+/* Ensure SVG colors remain the same */
+.dark-theme svg {
+  fill: inherit;
+}
