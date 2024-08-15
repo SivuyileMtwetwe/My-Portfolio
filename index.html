@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sivuyile Mtwetwe</title>
-<link rel="shortcut icon" type="image/x-icon" href="./Images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./Images/favicon.ico" />
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="animations.css" />
   </head>
   <body>
     <nav id="desktop-nav">
@@ -40,11 +41,16 @@
     </nav>
     <section id="profile">
       <div class="section__pic-container">
-        <img src="./Images/Picsart_24-06-27_21-26-59-799.jpg" alt="Sivuyile profile picture" id="me"style="boarder-radius:250px"/>
+        <img
+          src="./Images/Picsart_24-06-27_21-26-59-799.jpg"
+          alt="Sivuyile profile picture"
+          id="me"
+          style="boarder-radius: 250px"
+        />
       </div>
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Sivuyile Mtwetwe</h1>
+        <h1 class="title" id="name">Sivuyile Mtwetwe</h1>
         <p class="section__text__p2">Full-Stack MEAN Developer</p>
         <div class="btn-container">
           <button
@@ -58,17 +64,14 @@
           </button>
         </div>
         <div id="socials-container">
-         <a href='https://www.linkedin.com/in/sivuyilemtwetwe' target="_blank"><img
-            src="./Images/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-           
-          ></a> 
-         <a href='https://github.com/sivuyilemtwetwe'  target="_blank"> <img
-            src="./Images/github.png"
-            alt="My Github profile"
-            class="icon"
-            
+          <a href="https://www.linkedin.com/in/sivuyilemtwetwe" target="_blank"
+            ><img
+              src="./Images/linkedin.png"
+              alt="My LinkedIn profile"
+              class="icon"
+          /></a>
+          <a href="https://github.com/sivuyilemtwetwe" target="_blank">
+            <img src="./Images/github.png" alt="My Github profile" class="icon"
           /></a>
         </div>
       </div>
@@ -107,7 +110,17 @@
           </div>
           <div class="text-container">
             <p>
-              Hi, I'm Sivuyile Mtwetwe, a full-stack MEAN developer passionate about creating efficient and user-friendly web applications. I enjoy the creative challenge of transforming ideas into reality, from front-end design to back-end architecture. My project experience ranges from a simple message submitter to a digital cookbook, with my latest project Zamikhaya being a particular highlight. Proficient in the entire MEAN stack, I value clean code and user-centric design. Beyond coding, I enjoy tutoring, podcasts, music, art, movies, and am passionate about social entrepreneurship and continuous learning within software development.
+              Hi, I'm Sivuyile Mtwetwe, a full-stack MEAN developer passionate
+              about creating efficient and user-friendly web applications. I
+              enjoy the creative challenge of transforming ideas into reality,
+              from front-end design to back-end architecture. My project
+              experience ranges from a simple message submitter to a digital
+              cookbook, with my latest project Zamikhaya being a particular
+              highlight. Proficient in the entire MEAN stack, I value clean code
+              and user-centric design. Beyond coding, I enjoy tutoring,
+              podcasts, music, art, movies, and am passionate about social
+              entrepreneurship and continuous learning within software
+              development.
             </p>
           </div>
         </div>
@@ -135,7 +148,6 @@
                 />
                 <div>
                   <h3>HTML</h3>
-
                 </div>
               </article>
               <article>
@@ -146,7 +158,6 @@
                 />
                 <div>
                   <h3>CSS</h3>
-
                 </div>
               </article>
               <article>
@@ -157,7 +168,6 @@
                 />
                 <div>
                   <h3>JavaScript</h3>
-
                 </div>
               </article>
               <article>
@@ -168,7 +178,6 @@
                 />
                 <div>
                   <h3>TypeScript</h3>
-
                 </div>
               </article>
               <article>
@@ -179,7 +188,6 @@
                 />
                 <div>
                   <h3>Angular</h3>
-
                 </div>
               </article>
               <article>
@@ -190,7 +198,6 @@
                 />
                 <div>
                   <h3>Bootstrap</h3>
-
                 </div>
               </article>
               <article>
@@ -201,7 +208,6 @@
                 />
                 <div>
                   <h3>Flowbite</h3>
-
                 </div>
               </article>
               <article>
@@ -212,7 +218,6 @@
                 />
                 <div>
                   <h3>Tailwind</h3>
-
                 </div>
               </article>
               <article>
@@ -223,9 +228,9 @@
                 />
                 <div>
                   <h3>Figma</h3>
-
                 </div>
-              </article>  <article>
+              </article>
+              <article>
                 <img
                   src="./Images/photoshop.svg"
                   alt="Experience icon"
@@ -233,9 +238,9 @@
                 />
                 <div>
                   <h3>Adobe Photoshop</h3>
-
                 </div>
-              </article>  <article>
+              </article>
+              <article>
                 <img
                   src="./Images/canva.svg"
                   alt="Experience icon"
@@ -243,10 +248,9 @@
                 />
                 <div>
                   <h3>Canva</h3>
-
                 </div>
               </article>
- <article>
+              <article>
                 <img
                   src="./Images/chartjs.svg"
                   alt="Experience icon"
@@ -254,7 +258,6 @@
                 />
                 <div>
                   <h3>Chart Js</h3>
-
                 </div>
               </article>
             </div>
@@ -270,18 +273,17 @@
                 />
                 <div>
                   <h3>MongoDB</h3>
-
                 </div>
               </article>
               <article>
-                <img id="expr"
+                <img
+                  id="expr"
                   src="Images/Express.js_light.svg"
                   alt="Experience icon"
                   class="icon"
                 />
                 <div>
                   <h3>Express JS</h3>
-
                 </div>
               </article>
               <article>
@@ -292,7 +294,6 @@
                 />
                 <div>
                   <h3>Node JS</h3>
-
                 </div>
               </article>
               <article>
@@ -303,10 +304,9 @@
                 />
                 <div>
                   <h3>Git</h3>
-
                 </div>
               </article>
-  <article>
+              <article>
                 <img
                   src="./Images/github.png"
                   alt="Experience icon"
@@ -314,7 +314,6 @@
                 />
                 <div>
                   <h3>GitHub</h3>
-
                 </div>
               </article>
             </div>
@@ -327,7 +326,8 @@
         class="icon arrow"
         onclick="location.href='./#projects'"
       />
-    </section><br><br>
+    </section>
+    <br /><br />
     <section id="projects">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
@@ -335,72 +335,76 @@
         <div class="about-containers">
           <div class="details-container color-container">
             <div class="article-container">
-              <video autoplay loop muted alt="Project 1"
-                class="project-img" > <source src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_005119_0002.mp4"
-                type="video/mp4"></video>
-
-
+              <video autoplay loop muted alt="Project 1" class="project-img">
+                <source
+                  src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_005119_0002.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
-            <h2 class="experience-sub-title project-title">Message Submitter</h2>
+            <h2 class="experience-sub-title project-title">
+              Message Submitter
+            </h2>
             <div class="btn-container">
-              <a href='https://github.com/SivuyileMtwetwe/My-Work.git'
-                target="_blank"><button
-                class="btn btn-color-2 project-btn"
-                >
-                Github
-              </button></a>
-              <a href='https://messsub.netlify.app'
-                target="_blank"><button
-                class="btn btn-color-2 project-btn"
-                >
-                Live Demo
-              </button></a>
+              <a
+                href="https://github.com/SivuyileMtwetwe/My-Work.git"
+                target="_blank"
+                ><button class="btn btn-color-2 project-btn">Github</button></a
+              >
+              <a href="https://messsub.netlify.app" target="_blank"
+                ><button class="btn btn-color-2 project-btn">
+                  Live Demo
+                </button></a
+              >
             </div>
           </div>
           <div class="details-container color-container">
             <div class="article-container">
-              <video autoplay loop muted alt="Project 2"
-                class="project-img"> <source
-                src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_004832_0001.mp4"
-                type="video/mp4" ></video>
+              <video autoplay loop muted alt="Project 2" class="project-img">
+                <source
+                  src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_004832_0001.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
-            <h2 class="experience-sub-title project-title">Digital Recipe Cookbook</h2>
+            <h2 class="experience-sub-title project-title">
+              Digital Recipe Cookbook
+            </h2>
             <div class="btn-container">
-              <a href='https://github.com/SivuyileMtwetwe/recipe-api.git'
-                target="_blank"><button
-                class="btn btn-color-2 project-btn"
-                 >
-                Github
-              </button></a>
-              <a href='https://digitalrecipebook.netlify.app'
-                target="_blank"><button
-                class="btn btn-color-2 project-btn"
-                >
-                Live Demo
-              </button></a>
+              <a
+                href="https://github.com/SivuyileMtwetwe/recipe-api.git"
+                target="_blank"
+                ><button class="btn btn-color-2 project-btn">Github</button></a
+              >
+              <a href="https://digitalrecipebook.netlify.app" target="_blank"
+                ><button class="btn btn-color-2 project-btn">
+                  Live Demo
+                </button></a
+              >
             </div>
           </div>
           <div class="details-container color-container">
             <div class="article-container">
-              <video autoplay loop muted alt="Project 3"
-                class="project-img"> <source
-                src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_003505_0001.mp4"
-                
-               type="video/mp4"></video>
+              <video autoplay loop muted alt="Project 3" class="project-img">
+                <source
+                  src="./Images/Beige Brown Aesthetic Save The Date Editable Mockup Instagram Post_20240731_003505_0001.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
             <h2 class="experience-sub-title project-title">Zamikhaya</h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
-             onclick="Swal.fire('Source Code Is Private')">
+                onclick="Swal.fire('Source Code Is Private')"
+              >
                 Github
               </button>
-              <a href='https://zamikhaya.vercel.app'
-                 target="_blank"><button
-                class="btn btn-color-2 project-btn"
-                 >
-                Live Demo
-              </button></a>
+              <a href="https://zamikhaya.vercel.app" target="_blank"
+                ><button class="btn btn-color-2 project-btn">
+                  Live Demo
+                </button></a
+              >
             </div>
           </div>
         </div>
@@ -422,7 +426,11 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:sivuyilemtwetwe@gmail.com">sivuyilemtwetwe@gmail.com</a></p>
+          <p>
+            <a href="mailto:sivuyilemtwetwe@gmail.com"
+              >sivuyilemtwetwe@gmail.com</a
+            >
+          </p>
         </div>
         <div class="contact-info-container">
           <img
@@ -430,29 +438,37 @@
             alt="LinkedIn icon"
             class="icon contact-icon"
           />
-          <p><a href="https://www.linkedin.com/in/sivuyilemtwetwe" target="_blank">LinkedIn</a></p>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/sivuyilemtwetwe"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </p>
         </div>
       </div>
     </section>
     <footer>
-
       <p>Copyright &#169; 2024 Sivuyile Mtwetwe. All Rights Reserved.</p>
     </footer>
     <script>
-      const themeToggle = document.querySelector('.logo1','.logo'); 
+      const themeToggle = document.querySelector(".logo1", ".logo");
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-});
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+      });
 
-const themeToggl = document.querySelector('.logo'); 
+      const themeToggl = document.querySelector(".logo");
 
-themeToggl.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-});
+      themeToggl.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+      });
     </script>
     <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/e086fa8a79.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/e086fa8a79.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
