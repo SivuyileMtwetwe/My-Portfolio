@@ -23,7 +23,7 @@
       </div>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo">Sivuyile Mtwetwe</div>
+      <div class="logo1">Sivuyile Mtwetwe</div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -274,8 +274,8 @@
                 </div>
               </article>
               <article>
-                <img
-                  src="./Images/Express.js_light.svg"
+                <img id="expr"
+                  src="Images/Express.js_light.svg"
                   alt="Experience icon"
                   class="icon"
                 />
@@ -439,12 +439,17 @@
       <p>Copyright &#169; 2024 Sivuyile Mtwetwe. All Rights Reserved.</p>
     </footer>
     <script>
-      const themeToggle = document.querySelector('.logo'); 
+      const themeToggle = document.querySelector('.logo1','.logo'); 
 
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
 });
 
+const themeToggl = document.querySelector('.logo'); 
+
+themeToggl.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+});
     </script>
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/e086fa8a79.js" crossorigin="anonymous"></script>

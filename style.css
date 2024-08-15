@@ -57,7 +57,11 @@ a:hover {
   text-decoration-color: rgb(181, 181, 181);
 }
 
-.logo {
+.logo1 {
+  font-size: 2rem;
+}
+
+.logo{
   font-size: 2rem;
 }
 
@@ -460,6 +464,7 @@ footer p {
 
 .dark-theme div {
   background-color: black;
+  border-color: lightgreen;
 }
 
 .dark-theme img[src$=".png"] {
@@ -469,4 +474,17 @@ footer p {
 /* Ensure SVG colors remain the same */
 .dark-theme svg {
   fill: inherit;
+}
+
+
+.dark-theme p,.dark-theme h2.experience-sub-title{
+ color: lightgreen;
+}
+
+.dark-theme img#expr{
+  filter: brightness(0) invert(1);
+}
+
+.dark-theme span{
+   background-color: green;
 }
