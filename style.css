@@ -462,7 +462,7 @@ footer p {
   background-color: black;
 }
 
-.dark-theme img.png {
+.dark-theme img[src$=".png"] {
   filter: brightness(0) invert(1);
 }
 
