@@ -1,7 +1,7 @@
 <template>
     <section class="hero">
-      <h1>Hi, I'm [Your Name]</h1>
-      <p>A passionate [Your Role].</p>
+      <h1>Hi, I'm Sivuyile Mtwetwe</h1>
+      <p>A passionate Full Stack Developer.</p>
     </section>
   </template>
   
