@@ -1,30 +1,32 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <HeroComp />
+    <AboutComp />
+    <SkillsComp />
+    <ProjectsComp />
+    <ContactComp />
+  </div>
 </template>
 
+<script>
+import HeroComp from './components/HeroComp.vue';
+import AboutComp from './components/AboutComp.vue';
+import SkillsComp from './components/SkillsComp.vue';
+import ProjectsComp from './components/ProjectsComp.vue';
+import ContactComp from './components/ContactComp.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HeroComp,
+    AboutComp,
+    SkillsComp,
+    ProjectsComp,
+    ContactComp,
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+/* Add global styles here if necessary */
 </style>

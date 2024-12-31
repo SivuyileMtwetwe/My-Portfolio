@@ -11,7 +11,7 @@
 import HeroComp from '@/components/HeroComp.vue';
 import ProjectsComp from '@/components/ProjectsComp.vue';
 import AboutComp from '@/components/AboutComp.vue';
-import ContactComp from '@/components/ContactsComp.vue';
+import ContactComp from '@/components/ContactComp.vue';
 
 export default {
   components: {
