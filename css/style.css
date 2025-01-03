@@ -1,3 +1,8 @@
+body {
+    --bs-primary: #6f42c1; /* Custom primary color */
+    --bs-secondary: #f8f9fa;
+}
+
         /* Existing styles */
         .fade-enter-active, .fade-leave-active {
             transition: opacity 0.5s ease;

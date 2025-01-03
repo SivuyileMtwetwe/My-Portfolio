@@ -1,27 +1,32 @@
 window.app.component('about-section', {
     template: `
-        <section class="py-20" id="about">
-            <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-bold text-center mb-16">About Me</h2>
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div class="space-y-6">
-                            <p class="text-lg text-gray-600 leading-relaxed">
-                                Hi, I'm Sivuyile Mtwetwe, a full-stack MEAN developer with a passion for crafting efficient, scalable web applications and a love for the puzzle-solving aspect of coding. I thrive on the challenge of bringing ideas to life, from initial concept to polished product, whether it's designing intuitive frontends in Angular or architecting performant APIs in Node.js and Express. My expertise spans the entire MEAN stack (MongoDB, Express.js, Angular, Node.js), and I'm a firm believer in clean code, continuous learning, and user-centric design. I'm always looking for opportunities to expand my skill set and take on projects that make a real impact.
-                            </p>
-
-                            <p>
-                             When I'm not coding, you might find me tutoring math and science, listening to podcasts, or exploring my interests in music, art, and movies. I'm also passionate about social entrepreneurship and dedicated to constantly learning and growing in the field of software development.
-                            </p>
+        <section id="experience" class="py-5">
+            <div class="container">
+                <p class="section__text__p1 text-center">Explore My</p>
+                <h1 class="title text-center mb-5">Experience</h1>
+                <div class="experience-details-container">
+                    <div class="about-containers">
+                        <div class="details-container mb-4">
+                            <h2 class="experience-sub-title">Frontend Development</h2>
+                            <div class="article-container d-flex flex-wrap gap-4">
+                                <article v-for="skill in frontendSkills" :key="skill.name" class="text-center">
+                                    <img :src="skill.icon" alt="Experience icon" class="icon mb-2" />
+                                    <div>
+                                        <h3>{{ skill.name }}</h3>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-                        <div class="bg-gray-50 p-6 rounded-lg">
-                            <h3 class="text-xl font-semibold mb-4">Key Skills</h3>
-                            <ul class="space-y-3">
-                                <li v-for="skill in skills" :key="skill" class="flex items-center">
-            
-                                    {{ skill }}
-                                </li>
-                            </ul>
+                        <div class="details-container">
+                            <h2 class="experience-sub-title">Backend Development</h2>
+                            <div class="article-container d-flex flex-wrap gap-4">
+                                <article v-for="skill in backendSkills" :key="skill.name" class="text-center">
+                                    <img :src="skill.icon" alt="Experience icon" class="icon mb-2" />
+                                    <div>
+                                        <h3>{{ skill.name }}</h3>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -29,51 +34,34 @@ window.app.component('about-section', {
         </section>
     `,
     setup() {
-        const skills = [
-            
+        const frontendSkills = [
+            { name: 'HTML', icon: './Images/html5.svg' },
+            { name: 'CSS', icon: './Images/css.svg' },
+            { name: 'JavaScript', icon: './Images/javascript.svg' },
+            { name: 'TypeScript', icon: './Images/typescript.svg' },
+            { name: 'Angular', icon: './Images/angular.svg' },
+            { name: 'Bootstrap', icon: './Images/bootstrap.svg' },
+            { name: 'Flowbite', icon: './Images/flowbite.svg' },
+            { name: 'Tailwind', icon: './Images/tailwindcss.svg' },
+            { name: 'Figma', icon: './Images/figma.svg' },
+            { name: 'Adobe Photoshop', icon: './Images/photoshop.svg' },
+            { name: 'Canva', icon: './Images/canva.svg' },
+            { name: 'Chart Js', icon: './Images/chartjs.svg' },
+        ];
 
-"HTML",
-
-"CSS",
-
-"JavaScript",
-
-"TypeScript",
-
-"Angular",
-
-"Bootstrap",
-
-"Flowbite",
-
-"Tailwind",
-
-"Figma",
-
-"Adobe Photoshop",
-
-"Canva",
-
-"Chart Js",
-
-
-"MongoDB",
-
-"Express JS",
-
-"Node JS",
-
-"Git",
-
-"GitHub",
-
-"Python",
-
-"SQL",
+        const backendSkills = [
+            { name: 'MongoDB', icon: './Images/mongodb.svg' },
+            { name: 'Express JS', icon: './Images/Express.js_light.svg' },
+            { name: 'Node JS', icon: './Images/nodejs.svg' },
+            { name: 'Git', icon: './Images/git.svg' },
+            { name: 'GitHub', icon: './Images/github.png' },
+            { name: 'Python', icon: './Images/python.svg' },
+            { name: 'SQL', icon: './Images/mysql.svg' },
         ];
 
         return {
-            skills
+            frontendSkills,
+            backendSkills,
         };
     }
 });
