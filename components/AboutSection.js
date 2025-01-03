@@ -1,32 +1,19 @@
 window.app.component('about-section', {
     template: `
-        <section id="experience" class="py-5">
+        <section id="about" class="py-5">
             <div class="container">
-                <p class="section__text__p1 text-center">Explore My</p>
-                <h1 class="title text-center mb-5">Experience</h1>
-                <div class="experience-details-container">
-                    <div class="about-containers">
-                        <div class="details-container mb-4">
-                            <h2 class="experience-sub-title">Frontend Development</h2>
-                            <div class="article-container d-flex flex-wrap gap-4">
-                                <article v-for="skill in frontendSkills" :key="skill.name" class="text-center">
-                                    <img :src="skill.icon" alt="Experience icon" class="icon mb-2" />
-                                    <div>
-                                        <h3>{{ skill.name }}</h3>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                        <div class="details-container">
-                            <h2 class="experience-sub-title">Backend Development</h2>
-                            <div class="article-container d-flex flex-wrap gap-4">
-                                <article v-for="skill in backendSkills" :key="skill.name" class="text-center">
-                                    <img :src="skill.icon" alt="Experience icon" class="icon mb-2" />
-                                    <div>
-                                        <h3>{{ skill.name }}</h3>
-                                    </div>
-                                </article>
-                            </div>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="mb-4">About Me</h2>
+                        <p>I'm Sivuyile Mtwetwe, a full-stack MEAN developer with expertise in MongoDB, Express.js, Angular, and Node.js. I’m passionate about creating efficient, scalable web applications and love the challenge of solving coding puzzles. I focus on delivering clean, maintainable code, and I always prioritize continuous learning and user-centric design. </p>
+                        <p>Outside of coding, I enjoy tutoring math and science, listening to podcasts, and exploring my interests in music, art, and movies. I'm also passionate about social entrepreneurship and dedicated to growing and learning in the field of software development.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded">
+                            <h3>Key Skills</h3>
+                            <ul class="list-unstyled">
+                                <li v-for="skill in skills" :key="skill">{{ skill }}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -34,34 +21,7 @@ window.app.component('about-section', {
         </section>
     `,
     setup() {
-        const frontendSkills = [
-            { name: 'HTML', icon: './Images/html5.svg' },
-            { name: 'CSS', icon: './Images/css.svg' },
-            { name: 'JavaScript', icon: './Images/javascript.svg' },
-            { name: 'TypeScript', icon: './Images/typescript.svg' },
-            { name: 'Angular', icon: './Images/angular.svg' },
-            { name: 'Bootstrap', icon: './Images/bootstrap.svg' },
-            { name: 'Flowbite', icon: './Images/flowbite.svg' },
-            { name: 'Tailwind', icon: './Images/tailwindcss.svg' },
-            { name: 'Figma', icon: './Images/figma.svg' },
-            { name: 'Adobe Photoshop', icon: './Images/photoshop.svg' },
-            { name: 'Canva', icon: './Images/canva.svg' },
-            { name: 'Chart Js', icon: './Images/chartjs.svg' },
-        ];
-
-        const backendSkills = [
-            { name: 'MongoDB', icon: './Images/mongodb.svg' },
-            { name: 'Express JS', icon: './Images/Express.js_light.svg' },
-            { name: 'Node JS', icon: './Images/nodejs.svg' },
-            { name: 'Git', icon: './Images/git.svg' },
-            { name: 'GitHub', icon: './Images/github.png' },
-            { name: 'Python', icon: './Images/python.svg' },
-            { name: 'SQL', icon: './Images/mysql.svg' },
-        ];
-
-        return {
-            frontendSkills,
-            backendSkills,
-        };
+        const skills = ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'Bootstrap'];
+        return { skills };
     }
 });
