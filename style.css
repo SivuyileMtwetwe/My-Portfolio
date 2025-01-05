@@ -483,7 +483,7 @@ span {
 .scroll-container {
       width: 100%;
       overflow: hidden;
-      background: #f0f0f0;
+      background: Red;
       padding: 12px 0;
       margin: 20px 0;
     }
@@ -492,7 +492,7 @@ span {
       display: inline-block;
       white-space: nowrap;
       animation: moveText 15s linear infinite;
-      color: #333;
+      color: white;
       font-size: 18px;
       padding: 0 20px;
     }
