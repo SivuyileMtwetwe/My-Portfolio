@@ -479,3 +479,29 @@ span {
 .dark-theme .menu-links {
   background-color: lightgreen;
 }
+
+.scroll-container {
+      width: 100%;
+      overflow: hidden;
+      background: #f0f0f0;
+      padding: 12px 0;
+      margin: 20px 0;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: moveText 15s linear infinite;
+      color: #333;
+      font-size: 18px;
+      padding: 0 20px;
+    }
+
+    @keyframes moveText {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
