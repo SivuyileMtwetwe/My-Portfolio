@@ -30,11 +30,22 @@ window.app.component('contact-section', {
             message: ''
         });
 
-        const handleSubmit = () => {
-            alert(`Thank you, ${form.name}! Your message has been sent.`);
-            form.name = '';
-            form.email = '';
-            form.message = '';
+        const handleSubmit = async () => {
+            try {
+                await fetch('https://formspree.io/f/xvgpkojq', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(form)
+                });
+                alert('Thank you! Your message has been sent.');
+                form.name = '';
+                form.email = '';
+                form.message = '';
+            } catch (error) {
+                alert('There was an error sending your message. Please try again later.');
+            }
         };
 
         return {
