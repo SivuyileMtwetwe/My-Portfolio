@@ -49,7 +49,7 @@
     bottom: 60px; /* Position above the footer */
     left: 0;
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: white;
     padding: 10px;
     z-index: 1000;
   }

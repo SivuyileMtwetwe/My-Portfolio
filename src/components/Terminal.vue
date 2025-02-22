@@ -47,7 +47,7 @@ export default {
       commandHistoryWithOutput: [], // Stores command history with output
       historyIndex: -1, // Tracks the current position in command history
       suggestions: [], // Stores autocomplete suggestions
-      availableCommands: ["about", "experience", "projects", "contact", "help", "fsociety", "hack"],
+      availableCommands: ["about", "experience", "projects", "contact", "help", "fsociety", "hello", "ecorp", "raspberry", "59"],
     };
   },
   methods: {
@@ -75,13 +75,15 @@ export default {
           this.$router.push("/contact");
           break;
         case "help":
-          output = "Available commands: about, experience, projects, contact, help, fsociety, hack";
+          output = "Available commands: about, experience, projects, contact, help, fsociety, hello, ecorp, raspberry, 59";
           break;
         case "fsociety":
-          output = "Welcome to fsociety.";
-          break;
-        case "hack":
-          output = "Hacking into the mainframe...";
+        case "hello":
+        case "ecorp":
+        case "raspberry":
+        case "59":
+          this.modalType = cmd;
+          this.isModalVisible = true;
           break;
         default:
           output = `Command '${cmd}' not found. Type 'help' for a list of commands.`;
@@ -133,8 +135,8 @@ export default {
 
 <style scoped>
 .terminal {
-  background-color: #1a1a1a;
-  color: #00ff00;
+  background-color: inherit; /* Inherit background color from body */
+  color: inherit; /* Inherit text color from body */
   padding: 20px;
   border-radius: 5px;
   font-family: "Source Code Pro", monospace;
@@ -166,14 +168,14 @@ export default {
 }
 
 .prompt {
-  color: #00ff00;
+  color: inherit; /* Inherit text color from body */
   margin-right: 10px;
 }
 
 .command-input {
   background: transparent;
   border: none;
-  color: #00ff00;
+  color: inherit; /* Inherit text color from body */
   font-family: "Source Code Pro", monospace;
   outline: none;
   flex-grow: 1;
@@ -188,7 +190,7 @@ export default {
 }
 
 .autocomplete p {
-  color: #00ff00;
+  color: inherit; /* Inherit text color from body */
   cursor: pointer;
 }
 

@@ -14,8 +14,8 @@
 
 <style scoped>
 footer {
-  background-color: #1a1a1a;
-  color: #00ff00;
+  background-color: inherit; /* Inherit background color from body */
+  color: inherit; /* Inherit text color from body */
   padding: 20px;
   text-align: center;
   font-family: "Source Code Pro", monospace;
@@ -34,7 +34,7 @@ footer {
 }
 
 .social-links a {
-  color: #00ff00;
+  color: inherit; /* Inherit text color from body */
   text-decoration: none;
 }
 

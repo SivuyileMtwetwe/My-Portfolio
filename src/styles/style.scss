@@ -8,15 +8,42 @@
 
 body {
   font-family: "Source Code Pro", monospace;
-  background-color: #1a1a1a;
-  color: #00ff00;
+  background-color: #ffffff; /* Light theme background */
+  color: #000000; /* Light theme text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a {
-  color: #00ff00;
-  text-decoration: none;
+body.dark-theme {
+  background-color: #1a1a1a; /* Dark theme background */
+  color: #00ff00; /* Dark theme text color */
 }
 
-a:hover {
-  text-decoration: underline;
+/* Headers and paragraphs */
+h1, h2, h3, h4, h5, h6, p {
+  color: inherit; /* Inherit text color from body */
+}
+
+/* Buttons */
+button {
+  background-color: #00ff00; /* Green background for buttons */
+  color: #1a1a1a; /* Dark text for buttons */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Source Code Pro", monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00cc00; /* Darker green on hover */
+}
+
+body.dark-theme button {
+  background-color: #00ff00; /* Green background for buttons in dark mode */
+  color: #1a1a1a; /* Dark text for buttons in dark mode */
+}
+
+body.dark-theme button:hover {
+  background-color: #00cc00; /* Darker green on hover in dark mode */
 }

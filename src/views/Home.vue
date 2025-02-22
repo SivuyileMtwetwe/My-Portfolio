@@ -14,11 +14,11 @@
         </div>
       </div>
       <div class="hero-image">
-        <!-- <img
-          src="../assets/your-image.jpg"
+        <img
+          src="../assets/Images/Picsart_24-06-27_21-26-59-799.jpg"
           alt="Sivuyile Mtwetwe"
           class="profile-image"
-        /> -->
+        />
       </div>
     </div>
   </div>
@@ -61,20 +61,20 @@ export default {
 
 .hero-title {
   font-size: 3rem;
-  color: #00ff00;
+  color:black;
   margin-bottom: 20px;
   animation: flicker-4 4s linear infinite both;
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #00ff00;
+  color:black;
   margin-bottom: 20px;
 }
 
 .hero-description {
   font-size: 1.2rem;
-  color: #00ff00;
+  color: black;
   margin-bottom: 30px;
 }
 

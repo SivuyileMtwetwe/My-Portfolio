@@ -20,13 +20,27 @@
 export default {
   data() {
     return {
-      darkMode: true, // Default to dark mode
+      darkMode: false, // Default to light mode
     };
+  },
+  mounted() {
+    // Load theme preference from localStorage
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      this.darkMode = true;
+      document.body.classList.add("dark-theme");
+    } else {
+      this.darkMode = false;
+      document.body.classList.remove("dark-theme");
+    }
   },
   methods: {
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
       document.body.classList.toggle("dark-theme", this.darkMode);
+
+      // Save theme preference to localStorage
+      localStorage.setItem("theme", this.darkMode ? "dark" : "light");
     },
   },
 };
@@ -34,8 +48,8 @@ export default {
 
 <style scoped>
 nav {
-  background-color: #1a1a1a;
-  color: #00ff00;
+  background-color: inherit; /* Inherit background color from body */
+  color: inherit; /* Inherit text color from body */
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -49,7 +63,7 @@ nav {
 }
 
 .nav-links a {
-  color: #00ff00;
+  color: inherit; /* Inherit text color from body */
   text-decoration: none;
 }
 
