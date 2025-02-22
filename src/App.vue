@@ -1,22 +1,18 @@
 <template>
   <div>
     <LoadingScreen v-if="isLoading" />
-    <router-view v-else />
-    <!-- <Footer /> -->
-    <ScrollToTop />
+    <GlobalLayout v-else />
   </div>
 </template>
 
 <script>
 import LoadingScreen from "@/components/LoadingScreen.vue";
-// import Footer from "@/components/Footer.vue";
-import ScrollToTop from "@/components/ScrollToTop.vue";
+import GlobalLayout from "@/layouts/GlobalLayout.vue";
 
 export default {
   components: {
     LoadingScreen,
-    // Footer,
-    ScrollToTop,
+    GlobalLayout,
   },
   data() {
     return {

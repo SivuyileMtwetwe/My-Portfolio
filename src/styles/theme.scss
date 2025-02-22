@@ -1,0 +1,57 @@
+.dark-theme {
+    background-color: black;
+    color: green;
+  }
+  
+  .dark-theme p,
+  .dark-theme h1,
+  .dark-theme h2,
+  .dark-theme h3,
+  .dark-theme h4,
+  .dark-theme h5,
+  .dark-theme h6,
+  .dark-theme a,
+  .dark-theme span {
+    color: green;
+  }
+  
+  .dark-theme .hamburger span,
+  .dark-theme button {
+    background-color: green;
+    color: white;
+  }
+  
+  .dark-theme .btn:hover {
+    background-color: lightgreen;
+    color: white;
+  }
+  
+  .dark-theme div {
+    background-color: black;
+    border-color: lightgreen;
+  }
+  
+  .dark-theme img[src$=".png"] {
+    filter: brightness(0) invert(1);
+  }
+  
+  .dark-theme svg {
+    fill: inherit;
+  }
+  
+  .dark-theme p,
+  .dark-theme h2.experience-sub-title {
+    color: lightgreen;
+  }
+  
+  .dark-theme img#expr {
+    filter: brightness(0) invert(1);
+  }
+  
+  .dark-theme span {
+    background-color: green;
+  }
+  
+  .dark-theme .menu-links {
+    background-color: lightgreen;
+  }

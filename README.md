@@ -1,19 +1,13 @@
-# mr-robot
+# Sivuyile Mtwetwe's Portfolio
 
-## Project setup
-```
-npm install
-```
+A *Mr. Robot*-themed portfolio built with Vue.js.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Features
+- Terminal-style interface.
+- Dark mode toggle.
+- Command history and autocomplete.
+- Easter eggs (`fsociety`, `hack`).
+- Responsive design.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Deployment
+Deployed on [Netlify/Vercel/GitHub Pages].

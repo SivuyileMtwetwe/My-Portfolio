@@ -1,6 +1,8 @@
 <template>
     <div class="about">
         <NavBar/>
+        <terminal/>
+        
       <div class="terminal">
         <p class="typing-animation">Loading about.txt...</p>
         <div class="file-content">
